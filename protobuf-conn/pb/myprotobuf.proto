@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package pb;
+
+//定义消息体
+message Student {
+    int32 age = 1;
+    string name = 2;
+}
