@@ -7,3 +7,7 @@ message Student {
     int32 age = 1;
     string name = 2;
 }
+
+message People {
+    int32 weight = 1;
+}
