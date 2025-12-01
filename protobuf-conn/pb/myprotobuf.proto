@@ -2,7 +2,8 @@ syntax = "proto3";
 
 package pb;
 
-//定义消息体
+option go_package = ".";
+
 message Student {
     int32 age = 1;
     string name = 2;
