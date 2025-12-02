@@ -2,13 +2,20 @@ syntax = "proto3";
 
 package pb;
 
-option go_package = ".";
+// 生成的 Go 代码会用到这个路径作为包名
+option go_package = "./pb;pb";
 
-message Student {
-    int32 age = 1;
-    string name = 2;
+// 定义一个 gRPC 服务
+service HelloService {
+  rpc SayHello (HelloRequest) returns (HelloReply);
 }
 
-message People {
-    int32 weight = 1;
+// 请求消息
+message HelloRequest {
+  string name = 1;
+}
+
+// 响应消息
+message HelloReply {
+  string message = 1;
 }

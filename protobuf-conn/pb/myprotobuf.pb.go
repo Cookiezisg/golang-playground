@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.33.1
-// source: myprotobuf.proto
+// source: pb/myprotobuf.proto
 
-package __
+package pb
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -21,29 +21,29 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Student struct {
+// 请求消息
+type HelloRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Age           int32                  `protobuf:"varint,1,opt,name=age,proto3" json:"age,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Student) Reset() {
-	*x = Student{}
-	mi := &file_myprotobuf_proto_msgTypes[0]
+func (x *HelloRequest) Reset() {
+	*x = HelloRequest{}
+	mi := &file_pb_myprotobuf_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Student) String() string {
+func (x *HelloRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Student) ProtoMessage() {}
+func (*HelloRequest) ProtoMessage() {}
 
-func (x *Student) ProtoReflect() protoreflect.Message {
-	mi := &file_myprotobuf_proto_msgTypes[0]
+func (x *HelloRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pb_myprotobuf_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,47 +54,41 @@ func (x *Student) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Student.ProtoReflect.Descriptor instead.
-func (*Student) Descriptor() ([]byte, []int) {
-	return file_myprotobuf_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use HelloRequest.ProtoReflect.Descriptor instead.
+func (*HelloRequest) Descriptor() ([]byte, []int) {
+	return file_pb_myprotobuf_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Student) GetAge() int32 {
-	if x != nil {
-		return x.Age
-	}
-	return 0
-}
-
-func (x *Student) GetName() string {
+func (x *HelloRequest) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-type People struct {
+// 响应消息
+type HelloReply struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Weight        int32                  `protobuf:"varint,1,opt,name=weight,proto3" json:"weight,omitempty"`
+	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *People) Reset() {
-	*x = People{}
-	mi := &file_myprotobuf_proto_msgTypes[1]
+func (x *HelloReply) Reset() {
+	*x = HelloReply{}
+	mi := &file_pb_myprotobuf_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *People) String() string {
+func (x *HelloReply) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*People) ProtoMessage() {}
+func (*HelloReply) ProtoMessage() {}
 
-func (x *People) ProtoReflect() protoreflect.Message {
-	mi := &file_myprotobuf_proto_msgTypes[1]
+func (x *HelloReply) ProtoReflect() protoreflect.Message {
+	mi := &file_pb_myprotobuf_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -105,74 +99,78 @@ func (x *People) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use People.ProtoReflect.Descriptor instead.
-func (*People) Descriptor() ([]byte, []int) {
-	return file_myprotobuf_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use HelloReply.ProtoReflect.Descriptor instead.
+func (*HelloReply) Descriptor() ([]byte, []int) {
+	return file_pb_myprotobuf_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *People) GetWeight() int32 {
+func (x *HelloReply) GetMessage() string {
 	if x != nil {
-		return x.Weight
+		return x.Message
 	}
-	return 0
+	return ""
 }
 
-var File_myprotobuf_proto protoreflect.FileDescriptor
+var File_pb_myprotobuf_proto protoreflect.FileDescriptor
 
-const file_myprotobuf_proto_rawDesc = "" +
+const file_pb_myprotobuf_proto_rawDesc = "" +
 	"\n" +
-	"\x10myprotobuf.proto\x12\x02pb\"/\n" +
-	"\aStudent\x12\x10\n" +
-	"\x03age\x18\x01 \x01(\x05R\x03age\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\" \n" +
-	"\x06People\x12\x16\n" +
-	"\x06weight\x18\x01 \x01(\x05R\x06weightB\x03Z\x01.b\x06proto3"
+	"\x13pb/myprotobuf.proto\x12\x02pb\"\"\n" +
+	"\fHelloRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"&\n" +
+	"\n" +
+	"HelloReply\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage2<\n" +
+	"\fHelloService\x12,\n" +
+	"\bSayHello\x12\x10.pb.HelloRequest\x1a\x0e.pb.HelloReplyB\tZ\a./pb;pbb\x06proto3"
 
 var (
-	file_myprotobuf_proto_rawDescOnce sync.Once
-	file_myprotobuf_proto_rawDescData []byte
+	file_pb_myprotobuf_proto_rawDescOnce sync.Once
+	file_pb_myprotobuf_proto_rawDescData []byte
 )
 
-func file_myprotobuf_proto_rawDescGZIP() []byte {
-	file_myprotobuf_proto_rawDescOnce.Do(func() {
-		file_myprotobuf_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_myprotobuf_proto_rawDesc), len(file_myprotobuf_proto_rawDesc)))
+func file_pb_myprotobuf_proto_rawDescGZIP() []byte {
+	file_pb_myprotobuf_proto_rawDescOnce.Do(func() {
+		file_pb_myprotobuf_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_pb_myprotobuf_proto_rawDesc), len(file_pb_myprotobuf_proto_rawDesc)))
 	})
-	return file_myprotobuf_proto_rawDescData
+	return file_pb_myprotobuf_proto_rawDescData
 }
 
-var file_myprotobuf_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_myprotobuf_proto_goTypes = []any{
-	(*Student)(nil), // 0: pb.Student
-	(*People)(nil),  // 1: pb.People
+var file_pb_myprotobuf_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_pb_myprotobuf_proto_goTypes = []any{
+	(*HelloRequest)(nil), // 0: pb.HelloRequest
+	(*HelloReply)(nil),   // 1: pb.HelloReply
 }
-var file_myprotobuf_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
+var file_pb_myprotobuf_proto_depIdxs = []int32{
+	0, // 0: pb.HelloService.SayHello:input_type -> pb.HelloRequest
+	1, // 1: pb.HelloService.SayHello:output_type -> pb.HelloReply
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_myprotobuf_proto_init() }
-func file_myprotobuf_proto_init() {
-	if File_myprotobuf_proto != nil {
+func init() { file_pb_myprotobuf_proto_init() }
+func file_pb_myprotobuf_proto_init() {
+	if File_pb_myprotobuf_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_myprotobuf_proto_rawDesc), len(file_myprotobuf_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pb_myprotobuf_proto_rawDesc), len(file_pb_myprotobuf_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
-		GoTypes:           file_myprotobuf_proto_goTypes,
-		DependencyIndexes: file_myprotobuf_proto_depIdxs,
-		MessageInfos:      file_myprotobuf_proto_msgTypes,
+		GoTypes:           file_pb_myprotobuf_proto_goTypes,
+		DependencyIndexes: file_pb_myprotobuf_proto_depIdxs,
+		MessageInfos:      file_pb_myprotobuf_proto_msgTypes,
 	}.Build()
-	File_myprotobuf_proto = out.File
-	file_myprotobuf_proto_goTypes = nil
-	file_myprotobuf_proto_depIdxs = nil
+	File_pb_myprotobuf_proto = out.File
+	file_pb_myprotobuf_proto_goTypes = nil
+	file_pb_myprotobuf_proto_depIdxs = nil
 }
