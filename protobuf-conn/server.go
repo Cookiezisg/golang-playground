@@ -6,7 +6,7 @@ import (
 	"log"
 	"net"
 
-	pb "protobuf-conn/pb" // 这里要改成你自己的 go_package 路径
+	pb "protobuf-conn/pb"
 
 	"google.golang.org/grpc"
 )
